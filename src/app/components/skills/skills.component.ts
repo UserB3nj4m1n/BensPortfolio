@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-skills',
@@ -8,14 +9,16 @@ import { CommonModule } from '@angular/common';
   templateUrl: './skills.component.html'
 })
 export class SkillsComponent {
-  skillCategories = [
+  constructor(public languageService: LanguageService) {}
+
+  skillCategories = computed(() => [
     {
-      name: 'Frontend Development',
+      name: this.languageService.t().SKILLS_CAT_FRONTEND,
       skills: ['Angular', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'HTML5', 'CSS3']
     },
     {
-      name: 'Infrastructure & Backend',
+      name: this.languageService.t().SKILLS_CAT_BACKEND,
       skills: ['Linux (Ubuntu)', 'Google Cloud Platform (GCP)', 'Git', 'Python', 'DNS Management']
     }
-  ];
+  ]);
 }

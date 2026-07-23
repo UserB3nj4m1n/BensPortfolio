@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-experience',
@@ -8,27 +9,27 @@ import { CommonModule } from '@angular/common';
   templateUrl: './experience.component.html'
 })
 export class ExperienceComponent {
-  projects = [
+  constructor(public languageService: LanguageService) {}
+
+  projects = computed(() => [
     {
-      title: 'Cloud & Linux Administrator',
-      description: 'Kompletné nasadzovanie a správa herných serverov v GCP, administrácia Ubuntu Linux, sieťová konfigurácia, správa DNS cez Namecheap.',
+      title: this.languageService.t().PROJ_1_TITLE,
+      description: this.languageService.t().PROJ_1_DESC,
       tags: ['Linux', 'GCP', 'DNS', 'Networking'],
-      image: 'https://picsum.photos/id/1060/800/600',
-      github: '#'
+      image: 'beyond_banner.jpg',
+      github: 'https://github.com/UserB3nj4m1n/beyondsmp-web'
     },
     {
-      title: 'Junior Full-Stack Developer',
-      description: 'Krátkodobý intenzívny projekt a workshop zameraný na full-stack vývoj pod mentoringom inžinierov zo Siemensu (Python, Angular).',
+      title: this.languageService.t().PROJ_2_TITLE,
+      description: this.languageService.t().PROJ_2_DESC,
       tags: ['Angular', 'Python', 'Full-Stack', 'Siemens'],
       image: 'https://picsum.photos/id/180/800/600',
       github: '#'
-    },
-    // Adding duplicated items conceptually or manually for infinite carousel if needed,
-    // though the HTML can just repeat the array.
-  ];
+    }
+  ]);
 
-  // We duplicate the array to easily create the infinite scroll effect
-  get displayProjects() {
-    return [...this.projects, ...this.projects, ...this.projects];
-  }
+  displayProjects = computed(() => {
+    const p = this.projects();
+    return [...p, ...p, ...p];
+  });
 }

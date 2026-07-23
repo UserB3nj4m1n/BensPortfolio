@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-contact',
@@ -12,7 +13,7 @@ export class ContactComponent {
   contactForm: FormGroup;
   isSubmitted = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, public languageService: LanguageService) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -27,7 +28,7 @@ export class ContactComponent {
       setTimeout(() => {
         this.contactForm.reset();
         this.isSubmitted = false;
-        alert('Message sent successfully!');
+        alert(this.languageService.t().CONTACT_SUCCESS);
       }, 1500);
     } else {
       this.contactForm.markAllAsTouched();

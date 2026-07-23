@@ -2,24 +2,24 @@
   <div class="space-y-8 animate-[fade-in_1s_ease-out]">
     <div class="space-y-4">
       <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight">
-        Junior Angular Developer & <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">Cloud Enthusiast</span>
+        {{ languageService.t().HERO_ROLE }} <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">{{ languageService.t().HERO_CLOUD }}</span>
       </h1>
       <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
-        Absolvent IT so zameraním na moderný frontend a správu Linux/GCP infraštruktúry.
+        {{ languageService.t().HERO_DESC }}
       </p>
     </div>
 
     <div class="flex flex-wrap gap-4">
       <button (click)="scrollTo('experience')" 
               class="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-        Pozrieť projekty
+        {{ languageService.t().HERO_BTN_PROJECTS }}
       </button>
       <a href="assets/cv.pdf" target="_blank"
          class="px-8 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium rounded-lg shadow-lg hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
         </svg>
-        Stiahnuť CV
+        {{ languageService.t().HERO_BTN_CV }}
       </a>
     </div>
 

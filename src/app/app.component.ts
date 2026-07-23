@@ -5,6 +5,7 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { SkillsComponent } from './components/skills/skills.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ThemeService } from './services/theme.service';
+import { LanguageService } from './services/language.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent {
   isMenuOpen = signal(false);
   isScrolled = signal(false);
 
-  constructor(public themeService: ThemeService) {}
+  constructor(public themeService: ThemeService, public languageService: LanguageService) {}
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
