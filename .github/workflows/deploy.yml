@@ -22,7 +22,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Automatically converts repo name/owner to lowercase tags
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@v5
@@ -46,10 +45,8 @@ jobs:
           username: devops
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            # Pull the newly pushed image (using lowercased image name)
-            docker pull ghcr.io/userb3nj4m1n/bens-portfolio:latest
-            # Stop and remove the old running container
+            # Matches exact repo name (bensportfolio)
+            docker pull ghcr.io/userb3nj4m1n/bensportfolio:latest
             docker stop portfolio || true
             docker rm portfolio || true
-            # Start the container with the new image
-            docker run -d --name portfolio -p 8081:80 --restart unless-stopped ghcr.io/userb3nj4m1n/bens-portfolio:latest
+            docker run -d --name portfolio -p 8081:80 --restart unless-stopped ghcr.io/userb3nj4m1n/bensportfolio:latest
