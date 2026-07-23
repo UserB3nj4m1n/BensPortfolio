@@ -3,6 +3,7 @@ name: Deploy Portfolio
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -21,12 +22,22 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # Automatically converts repo name/owner to lowercase tags
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=raw,value=latest
+
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/bens-portfolio:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
       - name: Deploy to Hetzner via SSH
         uses: appleboy/ssh-action@v1.0.3
@@ -35,10 +46,10 @@ jobs:
           username: devops
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            # Pull latest image from registry
-            docker pull ghcr.io/${{ github.repository_owner }}/bens-portfolio:latest
-            # Stop and remove old container
+            # Pull the newly pushed image (using lowercased image name)
+            docker pull ghcr.io/userb3nj4m1n/bens-portfolio:latest
+            # Stop and remove the old running container
             docker stop portfolio || true
             docker rm portfolio || true
-            # Run new container
-            docker run -d --name portfolio -p 8081:80 --restart unless-stopped ghcr.io/${{ github.repository_owner }}/bens-portfolio:latest
+            # Start the container with the new image
+            docker run -d --name portfolio -p 8081:80 --restart unless-stopped ghcr.io/userb3nj4m1n/bens-portfolio:latest
