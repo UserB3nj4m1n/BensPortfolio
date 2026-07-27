@@ -18,7 +18,7 @@ export class SkillsComponent {
     },
     {
       name: this.languageService.t().SKILLS_CAT_BACKEND,
-      skills: ['Linux (Ubuntu)', 'Google Cloud Platform (GCP)', 'Git', 'Python', 'DNS Management']
+      skills: ['Linux (Ubuntu)', 'Google Cloud Platform (GCP)', 'Git', 'Python', 'DNS Management', 'Docker', 'Firebase', 'REST APIs']
     }
   ]);
 }

@@ -1,20 +1,19 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, EventEmitter, Output, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../../services/language.service';
-import { ProjectsModalComponent } from '../projects-modal/projects-modal.component';
 
 @Component({
-  selector: 'app-experience',
+  selector: 'app-projects-modal',
   standalone: true,
-  imports: [CommonModule, ProjectsModalComponent],
-  templateUrl: './experience.component.html'
+  imports: [CommonModule],
+  templateUrl: './projects-modal.component.html'
 })
-export class ExperienceComponent {
-  isModalOpen = signal(false);
+export class ProjectsModalComponent {
+  @Output() close = new EventEmitter<void>();
 
   constructor(public languageService: LanguageService) {}
 
-  projects = computed(() => [
+  mainProjects = computed(() => [
     {
       title: this.languageService.t().PROJ_1_TITLE,
       description: this.languageService.t().PROJ_1_DESC,
@@ -42,15 +41,20 @@ export class ExperienceComponent {
     {
       title: this.languageService.t().PROJ_5_TITLE,
       description: this.languageService.t().PROJ_5_DESC,
-      tags: ['Angular', 'TypeScript', 'E-commerce', 'Firebase', 'AI'],
+      tags: ['Web Dev', 'School Project', 'E-commerce'],
       image: 'mist-game-store.png',
       github: 'https://github.com/martin852147/2025_3AI_5',
-      demo: '#' 
+      demo: '#' // To be updated when deployed
     }
   ]);
 
-  displayProjects = computed(() => {
-    const p = this.projects();
-    return [...p, ...p, ...p];
-  });
+  otherProjects = computed(() => [
+    {
+      title: this.languageService.t().PROJ_4_TITLE,
+      description: this.languageService.t().PROJ_4_DESC,
+      tags: ['Minecraft', 'Datapack', 'JSON', 'Modrinth'],
+      github: '#', // No GitHub provided, will be hidden if '#' in template
+      demo: 'https://modrinth.com/datapack/create-broken-bad-usable-stuff'
+    }
+  ]);
 }

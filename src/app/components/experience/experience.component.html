@@ -51,4 +51,16 @@
       }
     </div>
   </div>
+
+  <div class="mt-12 pb-8 text-center">
+    <button (click)="isModalOpen.set(true)"
+            class="px-8 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium rounded-full shadow-md hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 transform hover:-translate-y-1 inline-flex items-center gap-2">
+      {{ languageService.t().EXP_BTN_VIEW_ALL }}
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+    </button>
+  </div>
 </div>
+
+@if (isModalOpen()) {
+  <app-projects-modal (close)="isModalOpen.set(false)"></app-projects-modal>
+}
