@@ -17,14 +17,24 @@ export class ExperienceComponent {
       description: this.languageService.t().PROJ_1_DESC,
       tags: ['Linux', 'GCP', 'DNS', 'Networking'],
       image: 'beyond_banner.jpg',
-      github: 'https://github.com/UserB3nj4m1n/beyondsmp-web'
+      github: 'https://github.com/UserB3nj4m1n/beyondsmp-web',
+      demo: 'https://beyondsmp.online'
     },
     {
       title: this.languageService.t().PROJ_2_TITLE,
       description: this.languageService.t().PROJ_2_DESC,
       tags: ['Angular', 'Python', 'Full-Stack', 'Siemens'],
-      image: 'https://picsum.photos/id/180/800/600',
-      github: '#'
+      image: 'clinician.png',
+      github: 'https://github.com/UserB3nj4m1n/clinical-dashboard',
+      demo: 'https://siemens.bensport.space'
+    },
+    {
+      title: this.languageService.t().PROJ_3_TITLE,
+      description: this.languageService.t().PROJ_3_DESC,
+      tags: ['Angular 18', 'Tailwind', 'Signals'],
+      image: 'https://picsum.photos/id/0/800/600',
+      github: '#',
+      demo: '#'
     }
   ]);
 

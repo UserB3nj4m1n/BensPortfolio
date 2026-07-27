@@ -16,6 +16,7 @@ export const TRANSLATIONS = {
     EXP_TITLE: 'My Experience',
     EXP_DESC: 'Highlighting my journey through backend infrastructure and frontend development.',
     EXP_BTN_GITHUB: 'View on GitHub',
+    EXP_BTN_WEBSITE: 'Visit Website',
 
     SKILLS_TITLE: 'Technical Skills',
     SKILLS_DESC: 'The technologies and tools I work with to build scalable applications.',
@@ -42,7 +43,9 @@ export const TRANSLATIONS = {
     PROJ_1_TITLE: 'Cloud & Linux Administrator',
     PROJ_1_DESC: 'Complete deployment and management of game servers in GCP, Ubuntu Linux administration, network configuration, DNS management via Namecheap.',
     PROJ_2_TITLE: 'Junior Full-Stack Developer',
-    PROJ_2_DESC: 'Short-term intensive project and workshop focused on full-stack development under the mentoring of Siemens engineers (Python, Angular).'
+    PROJ_2_DESC: 'Short-term intensive project and workshop focused on full-stack development under the mentoring of Siemens engineers (Python, Angular).',
+    PROJ_3_TITLE: 'Personal Portfolio',
+    PROJ_3_DESC: 'Modern, responsive portfolio built with Angular 18, Tailwind CSS, and Signals.'
   },
   sk: {
     NAV_ABOUT: 'O mne',
@@ -59,6 +62,7 @@ export const TRANSLATIONS = {
     EXP_TITLE: 'Moje Skúsenosti',
     EXP_DESC: 'Prehľad mojej cesty backend infraštruktúrou a frontend vývojom.',
     EXP_BTN_GITHUB: 'Zobraziť na GitHube',
+    EXP_BTN_WEBSITE: 'Navštíviť stránku',
 
     SKILLS_TITLE: 'Technické Zručnosti',
     SKILLS_DESC: 'Technológie a nástroje, s ktorými pracujem pri tvorbe škálovateľných aplikácií.',
@@ -85,7 +89,9 @@ export const TRANSLATIONS = {
     PROJ_1_TITLE: 'Cloud a Linux Administrátor',
     PROJ_1_DESC: 'Kompletné nasadzovanie a správa herných serverov v GCP, administrácia Ubuntu Linux, sieťová konfigurácia, správa DNS cez Namecheap.',
     PROJ_2_TITLE: 'Junior Full-Stack Vývojár',
-    PROJ_2_DESC: 'Krátkodobý intenzívny projekt a workshop zameraný na full-stack vývoj pod mentoringom inžinierov zo Siemensu (Python, Angular).'
+    PROJ_2_DESC: 'Krátkodobý intenzívny projekt a workshop zameraný na full-stack vývoj pod mentoringom inžinierov zo Siemensu (Python, Angular).',
+    PROJ_3_TITLE: 'Osobné Portfólio',
+    PROJ_3_DESC: 'Moderné, responzívne portfólio postavené na Angular 18, Tailwind CSS a Signals.'
   }
 };
 
