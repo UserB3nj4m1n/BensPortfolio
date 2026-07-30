@@ -1,6 +1,7 @@
 import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../../services/language.service';
+import { ProjectsService } from '../../services/projects.service';
 import { ProjectsModalComponent } from '../projects-modal/projects-modal.component';
 
 @Component({
@@ -12,45 +13,10 @@ import { ProjectsModalComponent } from '../projects-modal/projects-modal.compone
 export class ExperienceComponent {
   isModalOpen = signal(false);
 
-  constructor(public languageService: LanguageService) {}
-
-  projects = computed(() => [
-    {
-      title: this.languageService.t().PROJ_1_TITLE,
-      description: this.languageService.t().PROJ_1_DESC,
-      tags: ['Linux', 'GCP', 'DNS', 'Networking'],
-      image: 'beyond_banner.jpg',
-      github: 'https://github.com/UserB3nj4m1n/beyondsmp-web',
-      demo: 'https://beyondsmp.online'
-    },
-    {
-      title: this.languageService.t().PROJ_2_TITLE,
-      description: this.languageService.t().PROJ_2_DESC,
-      tags: ['Angular', 'Python', 'Full-Stack', 'Siemens'],
-      image: 'clinician.png',
-      github: 'https://github.com/UserB3nj4m1n/clinical-dashboard',
-      demo: 'https://siemens.bensport.space'
-    },
-    {
-      title: this.languageService.t().PROJ_3_TITLE,
-      description: this.languageService.t().PROJ_3_DESC,
-      tags: ['Angular 18', 'Tailwind', 'Signals'],
-      image: 'portfolio.png',
-      github: '#',
-      demo: '#'
-    },
-    {
-      title: this.languageService.t().PROJ_5_TITLE,
-      description: this.languageService.t().PROJ_5_DESC,
-      tags: ['Angular', 'TypeScript', 'E-commerce', 'Firebase', 'AI'],
-      image: 'mist-game-store.png',
-      github: 'https://github.com/martin852147/2025_3AI_5',
-      demo: '#' 
-    }
-  ]);
+  constructor(public languageService: LanguageService, public projectsService: ProjectsService) {}
 
   displayProjects = computed(() => {
-    const p = this.projects();
+    const p = this.projectsService.mainProjects();
     return [...p, ...p, ...p];
   });
 }
